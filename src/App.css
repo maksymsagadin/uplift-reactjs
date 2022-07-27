@@ -17,5 +17,13 @@ body {
     height: 900px;
     margin-top: -330px;
     border-bottom-left-radius: 9rem;
+  }
+  .button:hover {
+    background: #696686 !important;
+  }
 
+  @media screen and (max-width:1200px) {
+    .hero-banner-img {
+        display: none;
+    }
   }
