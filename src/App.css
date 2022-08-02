@@ -22,8 +22,14 @@ body {
     background: #696686 !important;
   }
 
-  @media screen and (max-width:1200px) {
+@media screen and (max-width:1200px) {
     .hero-banner-img {
-        display: none;
+      width: 500px;
+      height: 700px;
+    }
+  }
+@media screen and (max-width:700px) {
+    .hero-banner-img {
+      display: none;
     }
   }
