@@ -11,6 +11,7 @@ const SearchExercises = () => {
             const exerciseData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', dbOptions )
 
             console.log(exerciseData)
+
         }
     }
 
@@ -24,12 +25,12 @@ const SearchExercises = () => {
                 <TextField
                     sx={{ input: { fontWeight: '700', border: 'none', borderRadius: '4px' }, width: { lg: '1170px', xs: '350px' }, backgroundColor: '#fffbfd', borderRadius: '4px' }}
                     height='76px'
-                    value=''
-                    onChange={(e) => {}}
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value.toLowerCase())}
                     placeholder="Search Exercises"
                     type="text"
                 />
-                <Button className="button" sx={{ bgcolor: '#a2a2c7', color: '#fffbfd', textTransform: 'none', width: { lg: '173px', xs: '80px' }, height: '56px', position: 'absolute', right: '0', fontSize: { lg: '20px', xs: '14px' } }} onClick={(e) => {}}>
+                <Button className="button" sx={{ bgcolor: '#a2a2c7', color: '#fffbfd', textTransform: 'none', width: { lg: '173px', xs: '80px' }, height: '56px', position: 'absolute', right: '0', fontSize: { lg: '20px', xs: '14px' } }} onClick={handleSearch}>
                     Search
                 </Button>
                     
