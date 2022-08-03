@@ -1,16 +1,37 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Button, Stack, TextField, Typography } from '@mui/material'
 
+import HorizontalScrollBox from './HorizontalScrollBox'
+
 import { dbOptions, fetchData } from '../utils/fetchData'
 
 const SearchExercises = () => {
     const [search, setSearch] = useState('')
+    const [exercises, setExercises] = useState([])
+    const [bodyParts, setBodyParts] = useState([])
+
+    useEffect(() => {
+        const fetchExerciseData = async () => {
+            const bodyPartsData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', dbOptions )
+
+            setBodyParts(['all', ...bodyPartsData])
+        }
+        fetchExerciseData()
+    }, [])
+    
 
     const handleSearch = async () => {
         if (search) {
-            const exerciseData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', dbOptions )
-
-            console.log(exerciseData)
+            const exerciseData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', dbOptions )
+            const searchedExercises = exerciseData.filter(
+                (item) => item.name.toLowerCase().includes(search)
+                       || item.target.toLowerCase().includes(search)
+                       || item.equipment.toLowerCase().includes(search)
+                       || item.bodyPart.toLowerCase().includes(search)
+            )
+            
+            setSearch('')
+            setExercises(searchedExercises)
 
         }
     }
@@ -33,7 +54,9 @@ const SearchExercises = () => {
                 <Button className="button" sx={{ bgcolor: '#a2a2c7', color: '#fffbfd', textTransform: 'none', width: { lg: '173px', xs: '80px' }, height: '56px', position: 'absolute', right: '0', fontSize: { lg: '20px', xs: '14px' } }} onClick={handleSearch}>
                     Search
                 </Button>
-                    
+            </Box>
+            <Box sx={{ position: 'relative', p: '20px' }}>
+                <HorizontalScrollBox data={bodyParts} />
             </Box>
         </Stack>
     )
