@@ -5,16 +5,15 @@ import HorizontalScrollBox from './HorizontalScrollBox'
 
 import { dbOptions, fetchData } from '../utils/fetchData'
 
-const SearchExercises = () => {
+const SearchExercises = ({ setExercises,  setBodyPart, bodyPart }) => {
     const [search, setSearch] = useState('')
-    const [exercises, setExercises] = useState([])
-    const [bodyParts, setBodyParts] = useState([])
+    const [selection, setSelection] = useState([])
 
     useEffect(() => {
         const fetchExerciseData = async () => {
             const bodyPartsData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', dbOptions )
 
-            setBodyParts(['all', ...bodyPartsData])
+            setSelection(['all', ...bodyPartsData])
         }
         fetchExerciseData()
     }, [])
@@ -55,8 +54,8 @@ const SearchExercises = () => {
                     Search
                 </Button>
             </Box>
-            <Box sx={{ position: 'relative', p: '20px' }}>
-                <HorizontalScrollBox data={bodyParts} />
+            <Box sx={{ position: 'relative', width: '100%', p: '20px' }}>
+                <HorizontalScrollBox data={selection} setBodyPart={setBodyPart} bodyPart={bodyPart} />
             </Box>
         </Stack>
     )

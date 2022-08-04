@@ -1,3 +1,7 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
 body {
     font-family: 'Josefin Sans';
     background-color: #FFFAFB;
@@ -18,9 +22,50 @@ body {
     margin-top: -330px;
     border-bottom-left-radius: 9rem;
   }
-  .button:hover {
-    background: #696686 !important;
-  }
+.button:hover {
+  background: #696686 !important;
+}
+
+.right-arrow,
+.left-arrow {
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  position: absolute;
+  bottom: -50px;
+  right: 160px;
+  transform: scale(1, 1);
+  transition: 0.3s all ease-in-out;
+  z-index: 1;
+}
+
+.right-arrow {
+  right: 90px;
+}
+
+.right-arrow:hover,
+.left-arrow:hover {
+  transform: scale(1.2, 1.2);
+}
+
+.react-horizontal-scrolling-menu--wrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.bodyPart-card {
+  border-radius: 1rem;
+  transform: scale(1, 1);
+  transition: 0.3s all ease-in-out;
+}
+.bodyPart-card:hover {
+  transform: scale(1.06, 1.06);
+}
 
 @media screen and (max-width:1200px) {
     .hero-banner-img {
