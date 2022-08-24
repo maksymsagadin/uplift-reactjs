@@ -4,8 +4,6 @@ import { Stack } from '@mui/material'
 
 import Logo from '../assets/logos/wolf.png'
 
-
-
 const Navbar = () => {
   return (
     <Stack 
@@ -24,7 +22,7 @@ const Navbar = () => {
       </Link>
       <Stack direction='row' gap='40px' fontSize='24px' alignItems='flex-end' >
         <Link to='/' style={{ textDecoration: 'none', color: '#3d3b4a', borderBottom: '3px solid #a2a2c6' }}>Home</Link>
-        <a href='#exercises' style={{ textDecoration: 'none', color: '#3d3b4a' }}>Exercises</a>
+        {/* <a href="#exercises" style={{ textDecoration: 'none', color: '#3d3b4a' }}>Exercises</a> */}
       </Stack>
     </Stack>
   )

@@ -1,8 +1,51 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { Box } from '@mui/material'
+
+import { exerciseOptions, youtubeOptions, fetchData } from '../utils/fetchData'
+import Loader from '../components/Loader'
+import Info from '../components/Info'
+import ExerciseVideos from '../components/ExerciseVideos'
+import SimilarExercises from '../components/SimilarExercises'
+
 
 const ExerciseDetail = () => {
+    const [exerciseDetail, setExerciseDetail] = useState(null)
+    const [exerciseVideos, setExerciseVideos] = useState([])
+    const [targetMuscleExercises, setTargetMuscleExercises] = useState([])
+    const [equipmentExercises, setEquipmentExercises] = useState([])
+    const { id } = useParams()
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    
+        const fetchExercisesData = async () => {
+          const exerciseDbUrl = 'https://exercisedb.p.rapidapi.com'
+          const youtubeSearchUrl = 'https://youtube-search-and-download.p.rapidapi.com'
+    
+          const exerciseDetailData = await fetchData(`${exerciseDbUrl}/exercises/exercise/${id}`, exerciseOptions)
+          setExerciseDetail(exerciseDetailData)
+    
+          const exerciseVideosData = await fetchData(`${youtubeSearchUrl}/search?query=${exerciseDetailData.name} exercise`, youtubeOptions)
+          setExerciseVideos(exerciseVideosData.contents)
+    
+          const targetMuscleExercisesData = await fetchData(`${exerciseDbUrl}/exercises/target/${exerciseDetailData.target}`, exerciseOptions)
+          setTargetMuscleExercises(targetMuscleExercisesData)
+    
+          const equimentExercisesData = await fetchData(`${exerciseDbUrl}/exercises/equipment/${exerciseDetailData.equipment}`, exerciseOptions)
+          setEquipmentExercises(equimentExercisesData)
+        }
+        fetchExercisesData()
+    }, [id])
+
+    if (!exerciseDetail) return <Loader />
+
     return (
-        <div>ExerciseDetail</div>
+        <Box sx={{ mt: { lg: '96px', xs: '60px' } }}>
+            <Info exerciseDetail={exerciseDetail}/>
+            <ExerciseVideos exerciseVideos={exerciseVideos} name={exerciseDetail.name}/>
+            <SimilarExercises target={exerciseDetail.target} equipment={exerciseDetail.equipment} targetMuscleExercises={targetMuscleExercises} equipmentExercises={equipmentExercises}/>
+        </Box>
     )
 }
 

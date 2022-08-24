@@ -3,7 +3,7 @@ import Pagination from '@mui/material/Pagination'
 import { Box, Stack, Typography } from '@mui/material'
 
 import ExerciseCard from './ExerciseCard'
-import { dbOptions, fetchData } from '../utils/fetchData'
+import { exerciseOptions, fetchData } from '../utils/fetchData'
 
 const Exercises = ({ exercises, bodyPart, setExercises }) => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -14,9 +14,9 @@ const Exercises = ({ exercises, bodyPart, setExercises }) => {
       let exercisesData = []
 
       if (bodyPart === 'all') {
-        exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', dbOptions)
+        exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions)
       } else {
-        exercisesData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`, dbOptions)
+        exercisesData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`, exerciseOptions)
       }
 
       setExercises(exercisesData)

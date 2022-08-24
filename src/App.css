@@ -59,16 +59,13 @@ body {
 }
 .bodyPart-card {
   border-radius: 1rem;
-  transform: scale(1, 1);
+  transform: scale(0.8, 0.8);
   transition: 0.3s all ease-in-out;
 }
-.exercise-card:hover,
-.bodyPart-card:hover {
-  transform: scale(1.06, 1.06);
-}
+
 .exercise-card {
   width: 400px;
-  /* height: 500px; */
+  height: 550px;
   background: #fff;
   border: 3px solid #a2a2c7;
   border-radius: 8px;
@@ -77,13 +74,24 @@ body {
   justify-content: space-between;
   flex-direction: column;
   padding-bottom: 10px;
-  transform: scale(1, 1);
+  transform: scale(0.8, 0.8);
   transition: 0.3s all ease-in-out;
 }
-
 .exercise-card img {
   border-radius: 8px;
   height: 350px;
+}
+.exercise-card:hover,
+.bodyPart-card:hover {
+  transform: scale(0.9, 0.9);
+}
+.exercise-video {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 375px;
+  height: 375px;
+  text-decoration: none;
 }
 
 @media screen and (max-width:1200px) {
@@ -91,9 +99,25 @@ body {
       width: 500px;
       height: 700px;
     }
+    .react-horizontal-scrolling-menu--scroll-container {
+      width: 500px;
+    }
+    .exercise-card {
+      width: 320px;
+    }
+    .exercise-video {
+      width: 300px;
+      height: 280px;
+    }
   }
-@media screen and (max-width:700px) {
+@media screen and (max-width:750px) {
     .hero-banner-img {
       display: none;
     }
   }
+
+@media screen and (max-width:400px) {
+  .exercise-card {
+    width: 280px;
+  }
+}
