@@ -59,13 +59,12 @@ body {
 }
 .bodyPart-card {
   border-radius: 1rem;
-  transform: scale(0.8, 0.8);
+  transform: scale(0.9, 0.9);
   transition: 0.3s all ease-in-out;
 }
 
 .exercise-card {
   width: 400px;
-  height: 550px;
   background: #fff;
   border: 3px solid #a2a2c7;
   border-radius: 8px;
@@ -73,8 +72,8 @@ body {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  padding-bottom: 10px;
-  transform: scale(0.8, 0.8);
+  padding-bottom: 12px;
+  transform: scale(0.9, 0.9);
   transition: 0.3s all ease-in-out;
 }
 .exercise-card img {
