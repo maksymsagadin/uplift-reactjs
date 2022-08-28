@@ -1,4 +1,4 @@
-import All from '../assets/icons/all.png'
+import All from '../assets/logos/hamster.png'
 import Neck from '../assets/icons/neck.png'
 import Shoulders from '../assets/icons/shoulders.png'
 import Back from '../assets/icons/back.png'
@@ -9,9 +9,6 @@ import LowerArms from '../assets/icons/lowerarms.png'
 import Waist from '../assets/icons/waist.png'
 import UpperLegs from '../assets/icons/upperlegs.png'
 import LowerLegs from '../assets/icons/lowerlegs.png'
-
-
-
 
 
 const all = {

@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Box, Button, Stack, TextField, Typography } from '@mui/material'
-
+import { ExerciseContext, FilteredContext } from '../contexts/ExerciseContext'
 import HorizontalScrollBox from './HorizontalScrollBox'
 
 import { bodyPartsData } from '../data/BodyPartsData'
 
-const SearchExercises = ({ allExercises, setExercises }) => {
+const SearchExercises = () => {
     const [search, setSearch] = useState('')
     const [selection, setSelection] = useState('all')
+    const { allExercises,  } = useContext(ExerciseContext)
+    const { setExercises } = useContext(FilteredContext)
+
 
     useEffect(() => {
         if (allExercises) {
@@ -19,7 +22,7 @@ const SearchExercises = ({ allExercises, setExercises }) => {
                 setExercises(allExercises)
             }
         }
-      }, [selection])
+      }, [allExercises, setExercises, selection])
 
     const handleSearch = () => {
         if (search) {

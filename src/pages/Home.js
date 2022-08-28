@@ -1,30 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { ExerciseContext, FilteredContext } from '../contexts/ExerciseContext'
 import { Box } from '@mui/material'
-
 import HeroBanner from '../components/HeroBanner'
 import SearchExercises from '../components/SearchExercises'
 import Exercises from '../components/Exercises'
-import { exerciseOptions, fetchData } from '../utils/fetchData'
-
 
 const Home = () => {
-    const [allExercises, setAllExercises] = useState([])
+    const { allExercises } = useContext(ExerciseContext)
     const [exercises, setExercises] = useState([])
 
     useEffect(() => {
-        const fetchExercisesData = async () => {
-            const exerciseData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions)
-            setAllExercises(exerciseData)
-            setExercises(exerciseData)
-        }
-        fetchExercisesData()
-    }, [])
+        setExercises(allExercises)
+    },[allExercises])
 
     return (
         <Box>
             <HeroBanner />
-            <SearchExercises allExercises={allExercises} setExercises={setExercises}/>
-            <Exercises exercises={exercises}/>
+            <FilteredContext.Provider value={{ exercises, setExercises }}>
+                <SearchExercises />
+                <Exercises/>
+            </FilteredContext.Provider>
         </Box>
     )
 }
