@@ -25,12 +25,12 @@ const RightArrow = () => {
     )
 }
 
-const HorizontalScrollBox = ({ data, bodypartcard, setBodyPart, bodyPart }) => {
+const HorizontalScrollBox = ({ data, bodypartcard, setSelection, selection }) => {
   return (
     <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
         {data.map((item) => (
-            <Box key={item.id || item} itemId={item.id || item} m="10px 20px">
-                {bodypartcard ? <BodyPartCard item={item} setBodyPart={setBodyPart} bodyPart={bodyPart} /> : <ExerciseCard exercise={item} /> }
+            <Box key={item.bodypart || item} itemId={item.id || item} m="10px 10px">
+                {bodypartcard ? <BodyPartCard item={item} setSelection={setSelection} selection={selection} /> : <ExerciseCard exercise={item} /> }
             </Box>
         ))}
     </ScrollMenu>

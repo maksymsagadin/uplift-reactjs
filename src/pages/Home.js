@@ -1,20 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { ExerciseContext, FilteredContext } from '../contexts/ExerciseContext'
 import { Box } from '@mui/material'
-
 import HeroBanner from '../components/HeroBanner'
 import SearchExercises from '../components/SearchExercises'
 import Exercises from '../components/Exercises'
 
-
 const Home = () => {
+    const { allExercises } = useContext(ExerciseContext)
     const [exercises, setExercises] = useState([])
-    const [bodyPart, setBodyPart] = useState('all')
+
+    useEffect(() => {
+        setExercises(allExercises)
+    },[allExercises])
 
     return (
         <Box>
             <HeroBanner />
-            <SearchExercises setExercises={setExercises} bodyPart={bodyPart} setBodyPart={setBodyPart}/>
-            <Exercises exercises={exercises} bodyPart={bodyPart} setExercises={setExercises}/>
+            <FilteredContext.Provider value={{ exercises, setExercises }}>
+                <SearchExercises />
+                <Exercises/>
+            </FilteredContext.Provider>
         </Box>
     )
 }

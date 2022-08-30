@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Typography, Stack, Button, Box } from '@mui/material'
+import { DetailContext } from '../contexts/ExerciseContext'
 
-const Info = ({ exerciseDetail }) => {
+const Info = () => {
+    const { exerciseDetail } = useContext(DetailContext)
     const { bodyPart, gifUrl, name, target, equipment } = exerciseDetail
     const extraInfo =  [bodyPart, target, equipment]
 
@@ -20,7 +22,7 @@ const Info = ({ exerciseDetail }) => {
                 <Stack direction="row" gap="24px" alignItems="center">
                     {extraInfo.map((item) => (
                         <Box key={item}>
-                            <Button  disabled sx={{ ml: '21px', color: '#fff', background: '#a2a2c7', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
+                            <Button disabled sx={{ ml: '21px', color: 'white', background: '#a2a2c7', fontSize: '14px', borderRadius: '1rem', textTransform: 'capitalize' }}>
                                 <Typography textTransform="capitalize" sx={{ fontSize: { lg: '30px', xs: '20px' } }}>
                                     {item}
                                 </Typography>

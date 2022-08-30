@@ -1,29 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { FilteredContext } from '../contexts/ExerciseContext'
 import Pagination from '@mui/material/Pagination'
 import { Box, Stack, Typography } from '@mui/material'
-
 import ExerciseCard from './ExerciseCard'
-import { exerciseOptions, fetchData } from '../utils/fetchData'
 
-const Exercises = ({ exercises, bodyPart, setExercises }) => {
+const Exercises = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [exercisesPerPage] = useState(6)
+  const { exercises } = useContext(FilteredContext)
 
-  useEffect(() => {
-    const fetchExercisesData = async () => {
-      let exercisesData = []
-
-      if (bodyPart === 'all') {
-        exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions)
-      } else {
-        exercisesData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`, exerciseOptions)
-      }
-
-      setExercises(exercisesData)
-    }
-
-    fetchExercisesData()
-  }, [bodyPart,setExercises])
 
   // Pagination
   const indexOfLastExercise = currentPage * exercisesPerPage;
