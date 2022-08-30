@@ -15,10 +15,10 @@ const HeroBanner = () => {
             And Repeat
         </Typography>
         <Typography fontSize="22px" fontFamily="Alegreya" lineHeight="35px">
-            Check out the most effective exercises personalized to you
+            Every day is a great day to start.
         </Typography>
         <Stack>
-            <a href="#exercises" className='button' style={{ position: 'relative', marginTop: '45px', textDecoration: 'none', width: '200px', textAlign: 'center', background: '#a2a2c7', padding: '14px', fontSize: '22px', textTransform: 'none', color: '#fffbfd', borderRadius: '4px' }}>Explore Exercises</a>
+            <a href="#exercises" className='button' style={{ position: 'relative', marginTop: '45px', textDecoration: 'none', width: '200px', textAlign: 'center', background: '#a2a2c7', padding: '14px', fontSize: '22px', textTransform: 'none', color: '#fffbfd', borderRadius: '8px' }}>Explore Exercises</a>
         </Stack>
         
         <img src={HeroBannerImage} alt="pexels-cottonbro" className="hero-banner-img"/>

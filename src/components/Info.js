@@ -22,7 +22,7 @@ const Info = () => {
                 <Stack direction="row" gap="24px" alignItems="center">
                     {extraInfo.map((item) => (
                         <Box key={item}>
-                            <Button disabled sx={{ ml: '21px', color: 'white', background: '#a2a2c7', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
+                            <Button disabled sx={{ ml: '21px', color: 'white', background: '#a2a2c7', fontSize: '14px', borderRadius: '1rem', textTransform: 'capitalize' }}>
                                 <Typography textTransform="capitalize" sx={{ fontSize: { lg: '30px', xs: '20px' } }}>
                                     {item}
                                 </Typography>
