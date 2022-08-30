@@ -6,9 +6,8 @@ import ExerciseCard from './ExerciseCard'
 
 const Exercises = () => {
   const [currentPage, setCurrentPage] = useState(1)
-  const [exercisesPerPage] = useState(6)
   const { exercises } = useContext(FilteredContext)
-
+  const exercisesPerPage = 3
 
   // Pagination
   const indexOfLastExercise = currentPage * exercisesPerPage;
@@ -29,7 +28,7 @@ const Exercises = () => {
         ))}
       </Stack>
       <Stack sx={{ mt: { lg: '75px', xs: '50px' } }} alignItems='center'>
-        {exercises.length > 6 && (
+        {exercises.length > exercisesPerPage && (
           <Pagination
             color='standard'
             shape='rounded'
