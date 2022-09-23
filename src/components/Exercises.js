@@ -7,8 +7,7 @@ import ExerciseCard from './ExerciseCard'
 const Exercises = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const { exercises } = useContext(FilteredContext)
-  const exercisesPerPage = 3
-
+  const exercisesPerPage = 6
   // Pagination
   const indexOfLastExercise = currentPage * exercisesPerPage;
   const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
