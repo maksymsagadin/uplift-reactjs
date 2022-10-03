@@ -10,7 +10,7 @@ const Navbar = () => {
       direction='row'
       justifyContent='space-around'
       alignItems='center'
-      px='36px'
+      px='3rem'
       sx={{ 
         gap: { sm: '123px', xs: '40px' },
         mt: { sm: '24px', xs: '16px' },
