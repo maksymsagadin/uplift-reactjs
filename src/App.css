@@ -21,7 +21,9 @@ body {
     height: 900px;
     margin-top: -330px;
     border-bottom-left-radius: 9rem;
-  }
+    z-index: -2;
+}
+
 .button:hover {
   background: #696686 !important;
 }
