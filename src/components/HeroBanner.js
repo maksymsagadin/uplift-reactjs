@@ -8,7 +8,7 @@ const HeroBanner = () => {
   return (
     <Box sx={{ mt: { lg: '150px', xs: '70px' }, ml: { sm: '25px' } }} position="relative" p="24px">
         <Stack>
-            <Typography zIndex='-1' fontWeight={600} color="#c6c6a2" sx={{ position: 'absolute', opacity: '85%', display: { lg: 'block', sm: 'block', xs: 'none' }, ml: '36px', mb: '36px', fontSize: '222px' }}>
+            <Typography zIndex='-1' fontWeight={600} color="#c6c6a2" sx={{ position: 'absolute', opacity: '90%', display: { lg: 'block', sm: 'block', xs: 'none' }, ml: '36px', mb: '36px', fontSize: '222px' }}>
                 Uplift
             </Typography>
             <Typography color="#d46e5e" fontWeight="600" fontSize="26px">Fitness Club</Typography>
